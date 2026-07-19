@@ -1,0 +1,24 @@
+agent_state:
+  owner: procurement_agent
+  status: waiting
+  next_agent: vendor_followup_agent
+  reason: awaiting_vendor_confirmation
+
+tasks:
+  - id: send_followup_email
+    status: pending
+    priority: high
+
+  - id: update_erp
+    status: blocked
+    depends_on:
+      - vendor_confirmation
+
+memory: 
+  vendor_last_contact: "2026-07-18T10:30:00Z"
+  followup_count: 1
+
+decisions: 
+  retry_allowed: true
+  max_retries: 3
+  escalation_after_days: 2

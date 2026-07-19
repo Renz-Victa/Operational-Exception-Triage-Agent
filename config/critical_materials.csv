@@ -1,0 +1,4 @@
+material_id,material_name, description,supplier,criticality_level,current_stock,reorder_point,lead_time_days,unit_cost,currency,location,risk_level,alternative_material,alternative_supplier,last_order_date,next_expected_delivery,status
+MAT001,Semiconductor Chip,Electronics,Microcontroller used in production,Texas Instruments,Critical,500,200,45,12.50,USD,Warehouse A,High,Generic MCU Chip,STMicroelectronics,2026-06-01,2026-07-20,Available
+MAT002,Aluminium Sheet,Raw Material,Used for product casing,Alcoa,High,1200,500,30,25.00,USD,Warehouse B,Medium,6061 Aluminium Sheet,Kaiser Aluminium,2026-06-15,2026-07-18,Available
+MAT003,Lithium Battery Cell,Energy Storage,Primary battery component,CATL,Critical,300,150,60,45.00,USD,Warehouse C,High,NMC Battery Cell,LG Energy Solution,2026-05-20,2026-08-01,Delayed
