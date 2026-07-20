@@ -22,3 +22,22 @@ decisions:
   retry_allowed: true
   max_retries: 3
   escalation_after_days: 2
+
+Required Columns:
+  - material_id
+  - material_name
+  - description
+  - supplier
+  - criticality_level
+  - current_stock
+  - reorder_point
+  - lead_time_days
+  - unit_cost
+  - currency
+  - location
+  - risk_level
+  - alternative_material
+  - alternative_supplier
+  - last_order_date
+  - next_expected_delivery
+  - status

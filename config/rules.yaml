@@ -1,0 +1,55 @@
+execution:
+  before_every_task:
+    - Understand objective
+    - Identify constraints
+    - Check available tools
+    - Plan
+    - Execute
+    - Verify output
+    - Return result
+
+verification:
+  required:
+    - Check for hallucinations
+    - Check citations if used 
+    - Check calculations
+    - Check links
+    - Check file existence
+
+failure_modes:
+  max_retries: 2
+
+  if_blocked: 
+    - Explain blocker
+    - Request missing information
+    - Suggest alternative path
+
+autonomy:
+  allowed:
+    - Break large tasks into subtasks
+    - Use multiple tools
+    - Cache intermediate results
+
+  forbidden:
+    - Making irreversible decisions
+    - Deleting data
+    - Spending money
+    - Sending messages without approval
+
+exception_thresholds:
+  shipment:
+    quality_score: 80
+    delay_hours: 4
+    variance_percent: 8
+    inventory_units: 150
+    confidence_score: 0.90
+    sla_response_minutes: 15
+
+if delay > 6:
+  notify_manager()
+
+actions: 
+  on_exception:
+    - create_incident
+    - notify_manager
+    - generate_report
