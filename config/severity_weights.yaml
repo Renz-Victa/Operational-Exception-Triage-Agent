@@ -1,0 +1,16 @@
+severity_weights:
+  security:
+    exposed_secret: 100
+    privilege_escalation: 95
+
+  reliability:
+    service_outage: 90
+
+  compliance: 
+    pii_exposure: 95
+
+  quality: 
+    failing_tests: 70
+
+  maintainability:
+    duplicate_supply: 30
