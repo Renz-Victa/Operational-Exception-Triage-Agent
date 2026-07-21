@@ -1,16 +1,36 @@
-severity_weights:
-  security:
-    exposed_secret: 100
-    privilege_escalation: 95
+severity_scoring:
+  method: weighted_average
 
-  reliability:
-    service_outage: 90
+incident_evaluation:
+  composite_severity:
+      severity_weights:
+        security:
+          privilege_escalation: 90
+          exploitability: 30
 
-  compliance: 
-    pii_exposure: 95
+        reliability:
+          service_outage: 90
+          confidence: 20
 
-  quality: 
-    failing_tests: 70
+        compliance: 
+          pii_exposure: 95
+          exposed_secret: 90
+          data_sensitivity: 20
 
-  maintainability:
-    duplicate_supply: 30
+        quality: 
+          failing_tests: 70
+          business_impact: 40
+
+        maintainability:
+          duplicate_supply: 40
+          asset_criticality: 15
+
+      thresholds:
+        critical: 
+          min: 90
+        high: 
+          min: 70
+        medium: 
+          min: 50
+        low: 
+          min: 20
