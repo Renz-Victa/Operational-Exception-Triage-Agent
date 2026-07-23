@@ -8,55 +8,36 @@ An Operational Exception Triage Agent built using Python
 
 ```
 Operational Exception Triage Agent/
-├── main.py
-├── pyproject.toml
+├── config
+├── ├── schemas/
+|   |   └── po_status.yaml
+|   ├── rules.yaml
+|   ├── severity_weights.yaml
+|   └── critical_materials.csv
+|
+├── data/
+|   ├── inbound/
+|   ├── quarantine/
+|   └── db/
+|       └── triage.sqlite
+|
 ├── README.md
 ├── .gitignore
 ├── .env
 ├── .env.example
 ├── src/
-    └── triage_agent/
-        ├── __init__.py
-        ├── config.py
-        | 
-        ├── ingestion/
-        |   ├── __init__.py
-        |   ├── base.py
-        |   ├── webhook_source.py
-        |   ├── polling_source.py
-        |   └── deduplication.py
-        |
-        ├── classification/
-        |   ├── __init__.py
-        |   ├── models/
-        |   |   ├──  openai_classifier.py
-        |   |   └── gemini_classifier.py
-        |   ├── multi_llm_compare.py
-        |   └── schemas.py
-        |
-        ├── context/
-        |   ├── __init__.py
-        |   ├── retriever.py
-        |   ├── incident_history.py
-        |   └── account_context.py
-        |
-        ├── decision/
-        |   ├── __init__.py
-        |   ├── orchestrator.py
-        |   ├── escalation_rules.py
-        |   └── schemas.py
-        |
-        ├── guardrails/
-        |   ├── __init__.py
-        |   ├── kill_switch.py
-        |   ├── audit_log.py
-        |   └── scope_limits.py
-        |
-        ├── output/
-            ├── __init__.py
-            ├── kill_switch.py
-            ├── audit_log.py
-            └──
+|   ├── triage/
+|   |   ├── failback_template.py
+|   |   ├── llm_client.py
+|   |   ├── narrative.py
+|   |   ├── rules.py
+|   |   └──  severity.py
+|   |
+|   ├── ingestion/
+|   |   ├── watcher.py
+|   |   ├── validate.py
+|   |   └── loader.py
+
          
 ```
 
