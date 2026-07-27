@@ -37,8 +37,38 @@ Operational Exception Triage Agent/
 |   |   ├── watcher.py
 |   |   ├── validate.py
 |   |   └── loader.py
-
-         
+|   |
+|   ├── rooting/
+|   |   └── audience.py
+|   |
+|   ├── output/
+|   |   ├── pdf_coo.py
+|   |   ├── pdf_director.py
+|   |   └── styles.py
+|   |
+|   └── pipeline.py
+| 
+├── tests/
+|   ├── test_rules.py
+|   ├── test_severity.py
+|   ├── test_validate.py
+|   └── fixtures/
+|       └── sample_po_status.csv
+|
+├── logs/
+|   └── run_2026-07-18.log
+|
+├── reports/
+|   ├──  coo_rollup_2026-07-18.pdf
+|   └── director_detail_2026-07-18.pdf
+|
+├── model/
+|
+├── metadata.json
+├── download_model.sh
+├── REPORT.md
+└── requirements.txt
+     
 ```
 
 ---
