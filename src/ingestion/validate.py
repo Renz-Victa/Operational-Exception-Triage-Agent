@@ -7,8 +7,21 @@ class Customer(BaseModel):
   email: EmailStr
   date: date
 
+def validate_action(data):
+  if not isinstance(data, dict):
+    return False 
+
+  if "action" not in data:
+    return False
+
+  if "query" not in data:
+    return False
+
+  return True
+
 def main():
   Customer(BaseModel)
+  validate_action()
 
-__name__ = "__main__":
-main()
+if __name__ == "__main__":
+  main()
