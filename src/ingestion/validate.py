@@ -8,15 +8,15 @@ class Customer(BaseModel):
   date: date
 
 def validate_action(data):
+  required = ["action", "query", "confidence"]
   if not isinstance(data, dict):
-    return False 
-
-  if "action" not in data:
+      return False 
+  if not 0 <= data["confidence"] <= 1:
     return False
-
-  if "query" not in data:
-    return False
-
+  for key in required:
+    if key not in data:
+      return False 
+  
   return True
 
 def main():
