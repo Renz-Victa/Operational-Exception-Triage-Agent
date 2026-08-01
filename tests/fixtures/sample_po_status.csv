@@ -1,0 +1,2 @@
+po_id,material_id,material_name,description,quantity,supplier,criticality_level,current_storck,reorder_point,lead_time_days,unit_cost,currency,location,risk_level,alternative_material,alternative_supplier,order_date,expected_delivery_date,actual_delivery_date,status
+PO1001,MAT001,Steel Bolt,qwertyuiopasdfghjklzxcvbnm,500,ABC Supplies,Urgent,
