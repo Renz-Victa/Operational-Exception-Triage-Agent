@@ -1,2 +1,4 @@
-po_id,material_id,material_name,description,quantity,supplier,criticality_level,current_storck,reorder_point,lead_time_days,unit_cost,currency,location,risk_level,alternative_material,alternative_supplier,order_date,expected_delivery_date,actual_delivery_date,status
-PO1001,MAT001,Steel Bolt,qwertyuiopasdfghjklzxcvbnm,500,ABC Supplies,Urgent,
+po_id,material_id,material_name,description,quantity,supplier,criticality_level,current_stock,reorder_point,lead_time_days,unit_cost,currency,location,risk_level,alternative_material,alternative_supplier,order_date,expected_delivery_date,actual_delivery_date,status
+PO1001,MAT001,Industrial Ball Bearing, High-precision deep groove ball bearing for conveyor systems,500,SKF,High,120,200,14,18.50,ZAR,Rotterdam Warehouse,Medium,Ceramic Ball Bearing,NSK,2026-07-14,2026-07-24,2026-07-23,Delivered
+PO1002,MAT002,Stainless Steel Sheet,304-grade stainless steel sheet (2mm thickness),250,Outokumpu,Medium,80,100,21,95.75,ZAR,Hamburg Distribution Center,Low,Aluminium Alloy Sheet,ArcelorMittel,2026-07-18,2026-08-08,2026-08-06,Transit
+PO1003,MAT003,PLC Controller,Industrial programmable logic controller for automation systems,40,Siemens,Critical,8,15,30,1250.00,ZAR,Singapore Manufacturing Plant,High,Industrial Edge Controller,Schneider Electric,2026-07-25,2026-08-24,2026-08-26,Pending
