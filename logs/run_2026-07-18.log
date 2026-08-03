@@ -1,0 +1,32 @@
+2026-07-18 08:00:01 | INFO | Agnet started
+2026-07-18 08:00:02 | INFO | Loaded inventory file: sample_po_status.csv
+
+2026-07-18 08:00:05 | INFO | Analysing material inventory
+
+Material: MAT001
+Name: Industrial Ball Bearing
+Current Stock: 120
+Reorder Point: 200
+Status: Stock below reorder threshold
+
+2026-07-18 08:00:06 | DECISION | Create purchase recommendation
+Material: MAT001
+Recommended Order Quantity: 500
+Supplier: SKF
+Priority: High
+
+2026-07-18 08:00:10 | INFO | Checking supply risks
+
+Material: MAT003
+Name: PLC Controller
+Risk Level: High
+Criticality: Criticality
+Lead Time: 30 days
+
+2026-07-18 08:00:11 | ALERT | Possible production risk detected
+Action: Review alternative Supplier
+
+2026-07-18 08:00:15 | INFO | Agent run completed successfully
+Total materials analysed: 3
+Recommendations generated: 2
+Alerts created: 1
