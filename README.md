@@ -59,7 +59,7 @@ Operational Exception Triage Agent/
 |   └── run_2026-07-18.log
 |
 ├── reports/
-|   ├──  coo_rollup_2026-07-18.pdf
+|   ├── coo_rollup_2026-07-18.pdf
 |   └── director_detail_2026-07-18.pdf
 |
 ├── model/
@@ -115,6 +115,11 @@ After that, load it in the main.py file before you run the Agent
 
 - It uses the `python-dotenv` to load your API keys form the `.env` file.
 - It uses `argparse` to read the command line options.
+- Fully open-source, which allows you to run the entire stack on your own servers.
+
+## Contributing 
+
+The project is under active development in a rapidly evolving field. You're welcome and appreciate of any kind of contributions, be it feedback, bugfixes, features, new plugins and tools, or better documentation. You can file issues under this repo, or open a PR. 
 
 ## License
 
