@@ -1,3 +1,49 @@
+po_status:
+  exception_type: vendor_delay
+
+  vendor_delay:
+    status:
+      type: string
+      enum:
+        - detected
+        - acknoledged
+        - resolved
+        - cancelled
+      required: true
+
+    po_number:
+      type: integer
+      required: true
+
+    vendor_id:
+      type: string
+      required: true
+
+    excepted_delivery_date:
+      type: date
+      required: true
+
+    revised_delivery_date:
+      type: date
+      required: false
+
+    delay_days:
+      type: integer
+      minimum: 0
+      required: true
+
+    reason: 
+      type: string
+      required: true
+
+    detected_at:
+      type: datetime 
+      required: true
+
+    resolved_at: 
+      type: datetime 
+      required: false
+
 agent_state:
   owner: procurement_agent
   status: waiting
@@ -24,9 +70,11 @@ decisions:
   escalation_after_days: 2
 
 Required Columns:
+  - po_id
   - material_id
   - material_name
   - description
+  - quantity
   - supplier
   - criticality_level
   - current_stock
@@ -38,6 +86,7 @@ Required Columns:
   - risk_level
   - alternative_material
   - alternative_supplier
-  - last_order_date
-  - next_expected_delivery
+  - order_date
+  - expected_delivery_date
+  - actual_delivery_date
   - status
