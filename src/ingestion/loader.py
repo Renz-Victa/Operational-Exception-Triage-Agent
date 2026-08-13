@@ -1,6 +1,6 @@
 import sqlite3
 
-def database():
+def tasks():
   conn = sqlite3.connect("data/db/triage.sqlite")
   cursor = conn.cursor()
 
@@ -35,7 +35,7 @@ def validate_row(row):
   errors = []
 
   if not isinstance(row.get("value"), int):
-    errors.append("value must be numeric")
+    errors.append("Value must be numeric")
 
   return {
     **row,
@@ -43,15 +43,15 @@ def validate_row(row):
     "error": "; ".join(errors) if errors else None 
   }
 
-def insert_validated_rows(rows):
-  cursor = conn.cursor()
+def insert_validated_rows(row):
   conn = sqlite3.connect("data/db/triage.sqlite")
-  validated = [validate_row(row) for row in rows]
+  cursor = conn.cursor()
+  validated = [validate_row(row) for row in row]
 
   cursor.executemany("""
     INSERT INTO validated_rows
-    (name, value, status, error)
-    VALUES (?, ?, ?, ?  )
+    (message, value, status, error)
+    VALUES (?, ?, ?, ?)
   """, [
     (
       row.get("value"),
@@ -65,7 +65,7 @@ def insert_validated_rows(rows):
   return validated
 
 def main():
-  database()
+  tasks()
   validate_row()
   insert_validated_rows()
 
