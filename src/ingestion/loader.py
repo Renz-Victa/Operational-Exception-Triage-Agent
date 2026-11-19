@@ -1,7 +1,15 @@
 import sqlite3
+import csv
+from pathlib import Path
+
+conn = sqlite3.connect("data/db/triage.sqlite")
+CSV_PATH = Path("config/critical_materials.csv")
+
+def read_rows(CSV_PATH):
+  with CSV_PATH.open("r", newline="", encoding="utf-8-sig") as file:
+    return list(csv.DictReader(file))
 
 def tasks():
-  conn = sqlite3.connect("data/db/triage.sqlite")
   cursor = conn.cursor()
 
   cursor.execute("""
@@ -26,15 +34,13 @@ def tasks():
     "pending"
   ))
 
-  conn.commit(1)
-  conn.close(1)
-
-print("Triage database successfully created!")
+  conn.commit()
+  conn.close()
 
 def validate_row(row):
   errors = []
 
-  if not isinstance(row.get("value"), int):
+  if not isinstance(row.get("value"), (int, float)):
     errors.append("Value must be numeric")
 
   return {
@@ -43,8 +49,8 @@ def validate_row(row):
     "error": "; ".join(errors) if errors else None 
   }
 
+
 def insert_validated_rows(row):
-  conn = sqlite3.connect("data/db/triage.sqlite")
   cursor = conn.cursor()
   validated = [validate_row(row) for row in row]
 
@@ -65,9 +71,12 @@ def insert_validated_rows(row):
   return validated
 
 def main():
+  row = read_rows(CSV_PATH)
   tasks()
-  validate_row()
-  insert_validated_rows()
+  validate_row(row)
+  insert_validated_rows(row)
+  conn.commit()
+  conn.close()
 
 if __name__ == "__main__":
   main()
