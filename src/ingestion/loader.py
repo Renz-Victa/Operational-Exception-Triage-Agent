@@ -16,9 +16,11 @@ def tasks():
   CREATE TABLE IF NOT EXISTS tasks(
     id INTEGER PRIMARY KEY,
     message TEXT,
+    value TEXT,
     priority TEXT,
     assigned_agent TEXT,
-    status TEXT
+    status TEXT,
+    error TEXT
   )
   """)
 
@@ -35,12 +37,12 @@ def tasks():
   ))
 
   conn.commit()
-  conn.close()
 
 def validate_row(row):
+  value = row.get("value")
   errors = []
 
-  if not isinstance(row.get("value"), (int, float)):
+  if not isinstance(value, (int, float)) or isinstance(value, bool):
     errors.append("Value must be numeric")
 
   return {
@@ -54,12 +56,23 @@ def insert_validated_rows(row):
   cursor = conn.cursor()
   validated = [validate_row(row) for row in row]
 
+  cursor.execute("""
+      CREATE TABLE IF NOT EXISTS validated_rows(
+        id INTEGEER PRIMARY KEY,
+        message TEXT,
+        value TEXT,
+        status TEXT,
+        error TEXT 
+      )
+  """) 
+
   cursor.executemany("""
     INSERT INTO validated_rows
     (message, value, status, error)
     VALUES (?, ?, ?, ?)
   """, [
     (
+      row.get("message"),
       row.get("value"),
       row["status"],
       row["error"]
@@ -67,13 +80,12 @@ def insert_validated_rows(row):
     for row in validated
   ])
 
-  conn.commit(1)
+  conn.commit()
   return validated
 
 def main():
   row = read_rows(CSV_PATH)
   tasks()
-  validate_row(row)
   insert_validated_rows(row)
   conn.commit()
   conn.close()
